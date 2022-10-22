@@ -1,0 +1,43 @@
+[
+    {
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "IAC-Project"
+    },
+    {
+        "ParameterKey": "S3Repo",
+        "ParameterValue": "s3://udagram-s3-bucket-udacity/index.html"
+    },
+    {
+        "ParameterKey": "AMI",
+        "ParameterValue": "ami-08c40ec9ead489470"
+    },
+    {
+        "ParameterKey": "InstanceType",
+        "ParameterValue": "t2.micro"
+    },
+    {
+        "ParameterKey": "VolumeSize",
+        "ParameterValue": "10"
+    },
+    {
+        "ParameterKey": "DeviceName",
+        "ParameterValue": "/dev/sdk"
+    },
+    {
+        "ParameterKey": "KeyName",
+        "ParameterValue": "udacitydemo"
+    },
+    {
+        "ParameterKey": "WebAppServersMinSize",
+        "ParameterValue": "2"
+    },
+    {
+        "ParameterKey": "WebAppServersMaxSize",
+        "ParameterValue": "5"
+    },
+    {
+        "ParameterKey": "NetworkAccessIP",
+        "ParameterValue": "156.196.171.4/32"
+    }
+    
+   ]
