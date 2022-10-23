@@ -23,10 +23,6 @@ Parameters:
     Description: The device name for the volume of the EC2 Instance to be used in the launch config
     Type: String
 
-  KeyName:
-    Description: The keypair name to be used in the launch config
-    Type: String
-
   WebAppServersMinSize:
     Description: The minimum number of ec2 instance to be running
     Type: String
@@ -96,7 +92,6 @@ Resources:
           # sudo aws s3 cp ${S3Repo} /var/www/html
           # sudo systemctl restart apache2.service          
       ImageId: !Ref AMI
-      KeyName: !Ref KeyName
       SecurityGroups:
       - Ref: WebServerSecGroup
       InstanceType: !Ref InstanceType
@@ -191,7 +186,6 @@ Resources:
       # IamInstanceProfile: !Ref InstanceProfileWithS3Role
       ImageId: !Ref AMI
       InstanceType: !Ref InstanceType
-      KeyName: jump-box-keyname
       SecurityGroupIds:
       - Ref: JumpBoxSecurityGroup
       SubnetId: 

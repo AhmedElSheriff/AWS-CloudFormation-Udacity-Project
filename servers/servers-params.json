@@ -20,10 +20,6 @@
         "ParameterValue": "/dev/sdk"
     },
     {
-        "ParameterKey": "KeyName",
-        "ParameterValue": "udacitydemo"
-    },
-    {
         "ParameterKey": "WebAppServersMinSize",
         "ParameterValue": "2"
     },
