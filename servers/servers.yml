@@ -7,10 +7,6 @@ Parameters:
     Description: An environment name that will be prefixed to resource names
     Type: String
 
-  S3Repo:
-    Description: The S3 Bucket path to the text index.html file
-    Type: String
-
   AMI:
     Description: The Amazon Machine Image to be used in the launch config
     Type: String
@@ -44,40 +40,6 @@ Parameters:
     Type: String
 
 Resources:
-
-  S3Role:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-        - Effect: Allow
-          Principal:
-            Service:
-              - ec2.amazonaws.com
-          Action:
-            - sts:AssumeRole
-      Path: '/'
-  
-  RolePolicies:
-    Type: AWS::IAM::Policy
-    Properties:
-      PolicyName: S3BucketPolicyFullAccess
-      PolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-        - Action: 's3:*'
-          Effect: Allow
-          Resource: '*'
-      Roles:
-      - !Ref S3Role
-
-  InstanceProfileWithS3Role:
-    Type: AWS::IAM::InstanceProfile
-    Properties:
-      Path: "/"
-      Roles:
-      - Ref: S3Role
 
   LBSecGroup:
     Type: AWS::EC2::SecurityGroup
@@ -127,9 +89,12 @@ Resources:
           sudo apt-get update -y
           sudo apt-get install apache2 -y
           sudo systemctl start apache2.service
-          sudo apt-get install awscli -y
-          sudo aws s3 cp ${S3Repo} /var/www/html
-          sudo systemctl restart apache2.service          
+          cd /var/www/html
+          echo "it works! Udagram, Udacity" > index.html
+
+          # sudo apt-get install awscli -y
+          # sudo aws s3 cp ${S3Repo} /var/www/html
+          # sudo systemctl restart apache2.service          
       ImageId: !Ref AMI
       KeyName: !Ref KeyName
       SecurityGroups:
@@ -223,7 +188,7 @@ Resources:
     DependsOn:
     - JumpBoxSecurityGroup
     Properties:
-      IamInstanceProfile: !Ref InstanceProfileWithS3Role
+      # IamInstanceProfile: !Ref InstanceProfileWithS3Role
       ImageId: !Ref AMI
       InstanceType: !Ref InstanceType
       KeyName: jump-box-keyname

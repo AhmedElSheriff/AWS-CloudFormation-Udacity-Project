@@ -4,16 +4,12 @@
         "ParameterValue": "IAC-Project"
     },
     {
-        "ParameterKey": "S3Repo",
-        "ParameterValue": "s3://udagram-s3-bucket-udacity/index.html"
-    },
-    {
         "ParameterKey": "AMI",
         "ParameterValue": "ami-08c40ec9ead489470"
     },
     {
         "ParameterKey": "InstanceType",
-        "ParameterValue": "t2.micro"
+        "ParameterValue": "t3.medium"
     },
     {
         "ParameterKey": "VolumeSize",
